@@ -1,0 +1,11 @@
+{
+  "name": "Refriend",
+  "version": "0.0.1",
+  "description": "App for Heroku / Facebook integration, Node.js language",
+  "dependencies": {
+    "socket.io": ">= 0.9.16"
+  },
+  "engines": {
+    "node": ">= 0.6.x"
+  }
+}

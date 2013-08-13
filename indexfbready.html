@@ -354,6 +354,7 @@ function disconnect()
   $(button).attr("onclick", "queueEnter()");  
   button.innerHTML = 'New chat?';
   $('#msgInput').attr("disabled", true);
+  $("#reveal").attr("disabled", true);
   socket.emit('disconnectMe', true);
   addMessage('You have disconnected');
 }
@@ -452,7 +453,7 @@ function logout() {
 function reveal() {
   $("#myModal").modal('toggle');
   $("#reveal").attr("disabled", true);
-  document.getElementById('reveal').innerHTML = 'You have chosen to reveal yourself';
+  document.getElementById('reveal').innerHTML = 'Waiting for friend to reveal...';
   socket.emit('reveal', true);
   revealed = true;
 }

@@ -343,6 +343,7 @@ socket.on('friendDisconnect', function(dc) {
   $('#msgInput').attr("disabled", true);
   socket.emit('disconnectMe2', 'sad');
   document.getElementById('typing').style.opacity = 0;
+  $("#reveal").attr("disabled", true);
  // document.getElementById('app').style.display = 'none';
  // document.getElementById('queueEnter').style.display = 'block';
 });

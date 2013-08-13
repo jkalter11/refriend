@@ -1,1 +1,1 @@
-web: sudo node serverfbready.js
+web: node serverfbready.js

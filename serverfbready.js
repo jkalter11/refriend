@@ -4,7 +4,7 @@ var io = require('socket.io').listen(httpd);
 var fs = require('fs');
 var path = require('path');
 var queue = [];
-httpd.listen(80);
+httpd.listen(4000);
 function handler(req, res)
 {
     if(req.url == "/channel.html" || req.url == "/bootstrap.min.css" || req.url == "/bootstrap.min.js" || req.url == "/bootstrap.css" || req.url == "/FBLogo.png" || req.url == "/loading.gif") {

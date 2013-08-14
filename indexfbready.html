@@ -386,6 +386,13 @@ var inputElement = document.getElementById('msgInput');
 var typeOn = null;
 var keyDown = false;
 
+inputElement.onclick = function() {
+    if (msgInterval !== null) {
+      clearInterval(msgInterval);
+      msgInterval = null;
+      document.title = 'Re:friend';
+}
+
 inputElement.onkeydown = function(keyboardEvent) {
   var trimmed = $.trim(inputElement.value);
   if (keyboardEvent.keyCode === 13 && trimmed !="") {

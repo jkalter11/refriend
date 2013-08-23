@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>Re:friend</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,153 +8,163 @@
 <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
 </head>
 <body>
-<div id="theBox" class="container">
-
-<!--
-  Below we include the Login Button social plugin. This button uses the JavaScript SDK to
-  present a graphical Login button that triggers the FB.login() function when clicked.
-
-  Learn more about options for the login button plugin:
-  /docs/reference/plugins/login/ 
--->
-<h1><span style="font-family: 'Geo'">Re<span style="color:red">:</span></span><span style="font-family: 'Finger Paint', cursive">friend</span>
-
-<button id="logout" onclick="logout1()" style="float: right; display: none" class="btn btn-info">Logout of FB</button>
-</h1>
-
-<div id="jumbo" class="jumbotron">
-
-<div id="fb">
-<h1 style="font-family: Actor">Login with Facebook to get started</h1>
-<div id="fb-root"></div>
-<div align='center' class='container'>
-<br>
-<button onclick="FB.login()" class="btn btn-primary">Login with Facebook <img src="FBLogo.png" class="img-responsive"></img></button>
-</div>
-<!--<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>-->
-</div>
-
-<div id="queueEnter" style="display: none">
-<h3>Welcome!</h3>
-<p>Click the button below when you're ready to find a friend</p>
-<div align='center'>
-<button id="searchBtn" type="button" class="btn btn-default" onclick="queueEnter()" data-loading-text="Searching...">Find a Friend</button>
-</div>
-</div>
-
-<div id="wait" style="display: none">
-<div align='center'>
-<p>Please wait while we find you a friend...</p>
-<img src="loading.gif"></img>
-<div id="tooLong" align="center" style="display: none">
-<small><p><br>Taking too long? Perhaps none of your friends use this app :(
-<br>Try sharing with a few people and playing a guessing game</p></small>
-</div>
-</div>
-</div> 
-
-<div id="app" style="display: none">
-<div id="messages" style="height: 300px; overflow-y: auto; word-wrap: break-word"></div>
-<div id="typing" style="opacity: 0">Friend is typing...</div>
-
-
-<!--
-<div style="float: right">
-<button id="identityReveal" type="button" class="btn btn-default" onclick="identityReveal()">Reveal Your Identity</button>
-</div>
--->
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>x</span></button>
-          <h4 class="modal-title"><span style="color: black">Identity Reveal</span></h4>
+  <!-- This is the title and logout button on top of everything -->
+<div id="theBox" class="container" style="height: 100%">
+  <h1>
+    <span style="font-family: 'Geo'">Re<span style="color:red">:</span>
+    </span>
+    <span style="font-family: 'Finger Paint', cursive">friend</span>
+    <button id="logout" onclick="logout1()" 
+      style="float: right; display: none" 
+      class="btn btn-info">Logout of FB
+    </button>
+  </h1>
+  <!-- This is where the chat and login takes place -->
+  <div id="jumbo" class="jumbotron" style="height: 100%">
+    <!-- Prompt to login with facebook -->
+    <div id="fb">
+      <h1 style="font-family: Actor">Login with Facebook to get started</h1>
+      <div id="fb-root"></div>
+      <div class='container'>
+        <br>
+        <button onclick="FB.login()" class="btn btn-primary">
+          Login with Facebook 
+          <img src="FBLogo.png" class="img-responsive" style="float: right">
+          </img>
+        </button>
+      </div>
+      <h3>What is Re<span style="color:red">:</span>friend?</h3>
+      <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another friend using the app. You don't know the identity of the person you're chatting with and they don't know yours. All you know is that whoever you're talking to is your facebook friend.<br><br>Use it to re-meet your friends in a contextless setting, get closer to your not-as-close friends who you don't have any normal reason to talk to, find out things about your friends that you never knew, play identity guessing games, ask for anonymous advice from friends, or simply troll your chums. No matter what, everytime you are speaking to someone you have already friended.</p>
+    </div>
+    <!-- Prompt to enter the queue for finding a friend-->
+    <div id="queueEnter" style="display: none">
+      <h3>Welcome!</h3>
+      <p>Click the button below when you're ready to find a friend</p>
+      <div class='container'>
+        <button id="searchBtn" type="button" class="btn btn-default" 
+          onclick="queueEnter()">
+          Find a Friend
+        </button>
+      </div>
+    </div>
+    <!-- PLease wait screen -->
+    <div id="wait" style="display: none">
+      <div class='container'>
+        <p>Please wait while we find you a friend...</p>
+        <img src="loading.gif"></img>
+        <div id="tooLong" class="container" style="display: none">
+          <small><p><br>
+            Taking too long? Perhaps none of your friends use this app :(
+            <br>Try sharing with a few people and playing a guessing game</p>
+          </small>
         </div>
-        <div class="modal-body">
-          Click the button below if you wish to reveal your identity to your friend. Your identities will be revealed to each other if and when <b>both</b> of you decide to reveal them. If you don't wish to reveal, simply close this.
-          <div style="text-align: center">
-	  
-	    <div class="alert alert-danger" id="revealedYet" style="display: block">Your friend has <b>not</b> decided to reveal him/herself yet</div>
-	    <div class="alert alert-success" id="revealedYet2" style="display: none">Your friend has <b>already</b> decided to reveal him/herself</div>
-            <button type="button" class="btn btn-primary" onclick="reveal()">Reveal Identity</button>
+      </div>
+    </div> 
+    <!-- The real chat interface -->
+    <div id="app" style="display: none">
+      <div id="messages" 
+        style="height: 100%; overflow-y: auto; word-wrap: break-word">
+      </div>
+      <div id="typing" style="opacity: 0">Friend is typing...</div>
+
+      <!-- Modal for asking if you would like to reveal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" 
+                aria-hidden="true"><span>x</span>
+              </button>
+              <h4 class="modal-title"><span style="color: black">
+                Identity Reveal</span>
+              </h4>
+            </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <div class="alert alert-danger" id="revealedYet" 
+                style="display: block">
+                Your friend has <b>not</b> decided to reveal him/herself yet
+              </div>
+              <div class="alert alert-success" id="revealedYet2" 
+                style="display: none">
+                Your friend has <b>already</b> decided to reveal him/herself
+              </div>
+              <button type="button" class="btn btn-primary" onclick="reveal()">
+                Reveal Identity
+              </button>
+            </div>
+            Click the button above if you wish to reveal your identity 
+            to your friend. Your identities will be revealed to each other 
+            if and when <b>both</b> of you decide to reveal them. If you 
+            don't wish to reveal, simply close this.
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-<div class="modal fade" id="myModal2">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>x</span></button>
-          <h4 class="modal-title"><span style="color: black">Identity Reveal</span></h4>
-        </div>
-        <div class="modal-body">
-          
-          <div style="text-align: center">
-	  You have both chosen to reveal your identities!
-	    <div class="alert alert-info" id="friendName" style="text-align: center"></div>
-          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Modal that tells you your friend's identity -->
+    <div class="modal fade" id="myModal2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+              aria-hidden="true"><span>x</span>
+            </button>
+            <h4 class="modal-title"><span style="color: black">
+              Identity Reveal</span>
+            </h4>
+          </div>
+          <div class="modal-body">  
+            <div style="text-align: center">
+              You have both chosen to reveal your identities!
+              <div class="alert alert-info" id="friendName" 
+              style="text-align: center"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
-
-<div style="text-align: right">
-<span style="float: left">
-Your message:
-</span>
-<a data-toggle="modal" href="#myModal" class="btn btn-primary" id="reveal">Reveal Your Identity</a>
-
-<button id="dcButton" type="button" class="btn btn-default" onclick="disconnect()">Disconnect</button>
+    <!-- Buttons and input for chat -->  
+    <div style="text-align: right">
+      <span style="float: left">
+        Your message:
+      </span>
+      <a data-toggle="modal" href="#myModal" class="btn btn-primary" 
+        id="reveal">Reveal your Indentity
+      </a>
+      <button id="dcButton" type="button" class="btn btn-default" 
+        onclick="disconnect()">
+        Disconnect
+      </button>
+    </div>
+    <input type="text" id="msgInput" class="form-control input-sm"></input>
+  </div>
 </div>
 
-<input type="text" id="msgInput" class="form-control input-sm"></input>
-</div>
 
-</div>
-
-<div class="row">
-  	<div class="col-4">
-	  <h3>What is Re<span style="color:red">:</span>friend?</h3>
-	  <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another friend using the app. You don't know the identity of the person you're chatting with and they don't know yours. All you know is that whoever you're talking to is your facebook friend.<br><br>Use it to re-meet your friends in a contextless setting, get closer to your not-as-close friends who you don't have any normal reason to talk to, find out things about your friends that you never knew, play identity guessing games, ask for anonymous advice from friends, or simply troll your chums. No matter what, everytime you are speaking to someone you have already friended.</p>
-  	</div>
-  	<div class="col-8">
-	  <h3>Who are we?</h3>
-  	  <p style="text-align: justify">Actually, who am I? I am a lowly eighteen year old student about to make the transition into college life. I made this app as a project that would help me learn web coding over the summer, and I suppose I am quite happy with the results.<br><br>So why did I choose to make something like this? Well, I was showering one day and thinking about what I could make. I guess I was feeling kinda lonely and was thinking that I wanted to talk with someone, but I had no reason to contact anyone. So I thought hey, why don't I make this thing here. It'll be like omegle.com but more personal. It'll be something that can possibly leave you with something you can take away from it because it deals with friends. It'll be cool. Afterall, I didn't have any idea what else to make.<br><br>By the way, don't worry about me stealing personal info stuff. Facebook login doesn't give me your credentials. I don't even keep the things used to enable the app. This app doesn't even use a database. I personally have no access to them. And once you close the tab, you're automatically disconnected.<br><br>Thanks for reading and go ahead and give it a try. I'd appreciate it.</p>
-  	</div>
-</div>
-
-</div>
-
-<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="bootstrap.min.js" type="text/javascript"></script>
 <script src="http://refriend.herokuapp.com/socket.io/socket.io.js"></script>
 <script type="text/javascript">
+// adding messages to the chat box
 var messagesElement = document.getElementById('messages');
 var lastMessageElement = null;
-
 function addMessage(message) {
   var newMessageElement = document.createElement('div');
   var newMessageText = document.createTextNode(message);
   newMessageElement.appendChild(newMessageText);
   messagesElement.appendChild(newMessageElement);
   messagesElement.scrollTop = messagesElement.scrollHeight;
-  //lastMessageElement = newMessageElement;
 }
 
 var socket = io.connect('http://refriend.herokuapp.com');
@@ -162,27 +172,11 @@ var socket = io.connect('http://refriend.herokuapp.com');
 //begin fb login
 
 var handleResponse = function(response) {
-    // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
-      // The response object is returned with a status field that lets the app know the current
-      // login status of the person. In this case, we're handling the situation where they 
-      // have logged in to the app.
       testAPI();
     } else if (response.status === 'not_authorized') {
-      // In this case, the person is logged into Facebook, but not into the app, so we call
-      // FB.login() to prompt them to do so. 
-      // In real-life usage, you wouldn't want to immediately prompt someone to login 
-      // like this, for two reasons:
-      // (1) JavaScript created popup windows are blocked by most browsers unless they 
-      // result from direct interaction from people using the app (such as a mouse click)
-      // (2) it is a bad experience to be continually prompted to login upon page load.
       FB.login();
     } else {
-      // In this case, the person is not logged into Facebook, so we call the login() 
-      // function to prompt them to do so. Note that at this stage there is no indication
-      // of whether they are logged into the app. If they aren't then they'll see the Login
-      // dialog right after they log in to Facebook. 
-      // The same caveats as above apply to the FB.login() call here.
       FB.login();
     }
   };
@@ -196,13 +190,7 @@ var handleResponse = function(response) {
     xfbml      : true  // parse XFBML
   });
 
-  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
-  // for any authentication related change, such as login, logout or session refresh. This means that
-  // whenever someone who was previously logged out tries to log in again, the correct case below 
-  // will be handled. 
-  
-  
-    FB.Event.subscribe('auth.authResponseChange', handleResponse);
+  FB.Event.subscribe('auth.authResponseChange', handleResponse);
 };
 
   // Load the SDK asynchronously
@@ -218,15 +206,12 @@ var handleResponse = function(response) {
   // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       var id_and_name = [response.id, response.name];
       socket.emit('login', id_and_name);
       document.getElementById('logout').style.display = 'block';
       if(document.getElementById('app').style.display == 'none' 
         && document.getElementById('wait').style.display == 'none') {
-        //document.getElementById('fb').style.display = 'none';
-        //document.getElementById('queueEnter').style.display = 'block';
         $('#fb').attr('style', 'display: none');
         $('#queueEnter').attr('style', 'display: block');
       }
@@ -279,20 +264,16 @@ socket.on('goCheckQueue', function(doIt) {
 socket.on('queueCheckGo', function(args) {
   var queue = args[0];
   var friends = args[1];
-  //var prev = args[2];
-  console.log(args);
   var partner = -1;
   for (var i = 0; i < queue.length; i++) {
     for (var j = 0; j < friends.length; j++) {
       console.log('go');
       if (queue[i].fbId  == friends[j] /*&& queue[i].socketId != prev*/) {
         partner  = queue.splice(i, 1);
-        console.log(partner);
 	break;
       }
     }
   }
-  //console.log(partner[0].socketId);
   if (partner === -1)
     socket.emit('queueEnterSad', 'sad');
   else
@@ -305,21 +286,9 @@ socket.on('goodToGo', function(partner) {
     socket.emit('queueEnter', 'second time');
   }
   else {
-    console.log(partner);
     socket.emit('enterChatReal', partner);
   }
 });
-
-/*
-//queueCheckDone
-socket.on('queueCheckDone', function(partner) {
-  console.log(partner);
-  if (partner === -1)
-    socket.emit('queueEnterSad', 'sad');
-  else
-    socket.emit('enterChat', partner);
-});
-*/
 
 //join room
 socket.on('joinRoom', function(room) {
@@ -344,8 +313,6 @@ socket.on('friendDisconnect', function(dc) {
   socket.emit('disconnectMe2', 'sad');
   document.getElementById('typing').style.opacity = 0;
   $("#reveal").attr("disabled", true);
- // document.getElementById('app').style.display = 'none';
- // document.getElementById('queueEnter').style.display = 'block';
 });
 
 //disconnect
@@ -434,19 +401,16 @@ socket.on('typing', function() {
 });
 
 //logout
-
 function logout1() {
   document.getElementById('logout').innerHTML = "This will log you out of both FB and this app. Continue?";
   $("#logout").attr("onclick", "logout()"); 
 }
 
 function logout() {
-//  FB.Event.unsubscribe('auth.authResponseChange', handleResponse);
   FB.logout(function(res) {
     console.log(res);
   });
   socket.emit('disconnectMe', true);
-//  location.reload();
   document.getElementById('app').style.display = 'none' ;
   document.getElementById('wait').style.display = 'none';
   document.getElementById('queueEnter').style.display = 'none';
@@ -455,8 +419,6 @@ function logout() {
   document.getElementById('logout').innerHTML = "Logout of FB";
   $("#logout").attr("onclick", "logout1()");
 }
-
-
 
 //reveal identity
 function reveal() {
@@ -492,7 +454,6 @@ socket.on('bothRevealed', function(user) {
   document.getElementById('reveal').innerHTML = "Show Friend's Identity";
   $('#reveal').attr('disabled', false);
 });
-  
 
 </script>
 </body>

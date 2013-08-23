@@ -55,7 +55,7 @@ function handler(req, res)
 //config to prevent websockets (required for heroku)
 io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
+  io.set("polling duration", 3); 
 });
 
 io.sockets.on('connection', function (socket) 

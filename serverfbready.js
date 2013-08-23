@@ -8,7 +8,7 @@ var port = process.env.PORT || 4000;
 httpd.listen(port);
 function handler(req, res)
 {
-    if(req.url == "/channel.html" || req.url == "/bootstrap.min.css" || req.url == "/bootstrap.min.js" || req.url == "/bootstrap.css" || req.url == "/FBLogo.png" || req.url == "/loading.gif") {
+    if(req.url === "/channel.html" || req.url === "/bootstrap.min.css" || req.url === "/bootstrap.min.js" || req.url === "/FBLogo.png" || req.url === "/loading.gif" || req.url === "/favicon.ico") {
 	var file = path.normalize('.' + req.url);
 	console.log('Trying to serve', file);
 	function reportError(err) {

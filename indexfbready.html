@@ -23,7 +23,7 @@
   <div id="jumbo" class="jumbotron" 
     style="height: calc(93% - 30px)">
     <!-- Prompt to login with facebook -->
-    <div id="fb" style="height: 100%; display: none">
+    <div id="fb" style="height: 100%">
       <h1 style="font-family: Actor">Login with Facebook to get started</h1>
       <div id="fb-root"></div>
       <div style="text-align: center">
@@ -37,7 +37,7 @@
         </button>
       </div>
       <h3>What is Re<span style="color:red">:</span>friend?</h3>
-      <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another one of your friend using the app.</p>
+      <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another one of your friends using the app.</p>
     </div>
     <!-- Prompt to enter the queue for finding a friend-->
     <div id="queueEnter" style="display: none; height: 100%">
@@ -182,10 +182,8 @@ var handleResponse = function(response) {
     if (response.status === 'connected') {
       testAPI();
     } else if (response.status === 'not_authorized') {
-      document.getElementById('fb').style.display = 'block';
       FB.login();
     } else {
-      document.getElementById('fb').style.display = 'block';
       FB.login();
     }
   };

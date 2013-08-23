@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%">
+<html lang="en" style="height: 100%; max-height: 100%">
 <head>
 <title>Re:friend</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -140,17 +140,19 @@
     </div><!-- /.modal -->
 
     <!-- Buttons and input for chat -->  
-    <div style="text-align: right; height: 4%">
+    <div>
       <a data-toggle="modal" href="#myModal" class="btn btn-primary" 
         id="reveal" style="float: left">Reveal Identity
       </a>
-      <button id="dcButton" type="button" class="btn btn-default" 
-        onclick="disconnect()">
-        Disconnect
-      </button>
+      <div style="float: right">
+        <button id="dcButton" type="button" class="btn btn-default" 
+          onclick="disconnect()">
+          Disconnect
+        </button>
+      </div>
     </div>
     <input type="text" id="msgInput" class="form-control input-sm"
-    style="height: calc(6% - 2px)"
+    
     placeholder="Your Message">
     </input>
   </div>

@@ -23,6 +23,7 @@
   <div id="jumbo" class="jumbotron" 
     style="height: calc(93% - 30px)">
     <!-- Prompt to login with facebook -->
+    <noscript>
     <div id="fb" style="height: 100%">
       <h1 style="font-family: Actor">Login with Facebook to get started</h1>
       <div id="fb-root"></div>
@@ -39,6 +40,7 @@
       <h3>What is Re<span style="color:red">:</span>friend?</h3>
       <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another one of your friend using the app.</p>
     </div>
+    </noscript>
     <!-- Prompt to enter the queue for finding a friend-->
     <div id="queueEnter" style="display: none; height: 100%">
       <h3>Welcome!</h3>
@@ -70,7 +72,7 @@
       <div id="messages" 
         style="height: calc(86% - 30px); overflow-y: auto; word-wrap: break-word">
       </div>
-      <div id="typing" style="opacity: 0; height: 4%">Friend is typing...</div>
+      <div id="typing" style="opacity: 0; margin-top: -5px" class="visible-lg">Friend is typing...</div>
 
       <!-- Modal for asking if you would like to reveal -->
       <div class="modal fade" id="myModal">
@@ -333,6 +335,10 @@ function disconnect()
   socket.emit('disconnectMe', true);
   addMessage('You have disconnected');
 }
+
+$(window).unload(function() {
+  socket.emit('disconnectMe', true);
+});
 
 //receive message
 socket.on('serverMessage', function(content) {

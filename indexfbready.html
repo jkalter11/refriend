@@ -21,12 +21,12 @@
   </h1>
   <!-- This is where the chat and login takes place -->
   <div id="jumbo" class="jumbotron" 
-    style="max-height: calc(90% - 96px); min-height: calc(90% - 96px)">
+    style="height: calc(90% - 96px)">
     <!-- Prompt to login with facebook -->
-    <div id="fb">
+    <div id="fb" style="height: 100%">
       <h1 style="font-family: Actor">Login with Facebook to get started</h1>
       <div id="fb-root"></div>
-      <div class='container'>
+      <div style="text-align: center">
         <br>
         <button onclick="FB.login()" class="btn btn-primary">
           Login with Facebook 
@@ -35,13 +35,13 @@
         </button>
       </div>
       <h3>What is Re<span style="color:red">:</span>friend?</h3>
-      <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another friend using the app. You don't know the identity of the person you're chatting with and they don't know yours. All you know is that whoever you're talking to is your facebook friend.<br><br>Use it to re-meet your friends in a contextless setting, get closer to your not-as-close friends who you don't have any normal reason to talk to, find out things about your friends that you never knew, play identity guessing games, ask for anonymous advice from friends, or simply troll your chums. No matter what, everytime you are speaking to someone you have already friended.</p>
+      <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another one of your friend using the app.</p>
     </div>
     <!-- Prompt to enter the queue for finding a friend-->
-    <div id="queueEnter" style="display: none">
+    <div id="queueEnter" style="display: none; height: 100%">
       <h3>Welcome!</h3>
       <p>Click the button below when you're ready to find a friend</p>
-      <div class='container'>
+      <div syle="text-align: center">
         <button id="searchBtn" type="button" class="btn btn-default" 
           onclick="queueEnter()">
           Find a Friend
@@ -49,11 +49,11 @@
       </div>
     </div>
     <!-- PLease wait screen -->
-    <div id="wait" style="display: none">
-      <div class='container'>
+    <div id="wait" style="display: none; height: 100%">
+      <div style="text-align: center">
         <p>Please wait while we find you a friend...</p>
         <img src="loading.gif"></img>
-        <div id="tooLong" class="container" style="display: none">
+        <div id="tooLong" style="text-align: center" style="display: none">
           <small><p><br>
             Taking too long? Perhaps none of your friends use this app :(
             <br>Try sharing with a few people and playing a guessing game</p>
@@ -64,7 +64,7 @@
     <!-- The real chat interface -->
     <div id="app" style="display: none">
       <div id="messages" 
-        style="height: 100%; overflow-y: auto; word-wrap: break-word">
+        style="height: calc(80% - 30px); overflow-y: auto; word-wrap: break-word">
       </div>
       <div id="typing" style="opacity: 0">Friend is typing...</div>
 

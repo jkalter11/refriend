@@ -141,11 +141,8 @@
 
     <!-- Buttons and input for chat -->  
     <div style="text-align: right; height: 4%">
-      <span style="float: left">
-        Your message:
-      </span>
       <a data-toggle="modal" href="#myModal" class="btn btn-primary" 
-        id="reveal">Reveal your Indentity
+        id="reveal" style="float: left">Reveal Identity
       </a>
       <button id="dcButton" type="button" class="btn btn-default" 
         onclick="disconnect()">
@@ -153,7 +150,9 @@
       </button>
     </div>
     <input type="text" id="msgInput" class="form-control input-sm"
-    style="height: calc(6% - 2px)"></input>
+    style="height: calc(6% - 2px)"
+    placeholder="Your Message">
+    </input>
   </div>
 </div>
 
@@ -255,10 +254,10 @@ function queueEnter() {
   msgInterval = null;
   document.getElementById('reveal').href = '#myModal';
   $("#reveal").attr("disabled", false);
-  document.getElementById('reveal').innerHTML = 'Reveal Your Identity';
+  document.getElementById('reveal').innerHTML = 'Reveal Identity';
   setTimeout(function() {
     document.getElementById('tooLong').style.display = 'block'
-  }, 10000);
+  }, 9000);
 }
 
 //goCheckQueue
@@ -408,7 +407,7 @@ socket.on('typing', function() {
 
 //logout
 function logout1() {
-  document.getElementById('logout').innerHTML = "This will log you out of both FB and this app. Continue?";
+  document.getElementById('logout').innerHTML = "Sure?";
   $("#logout").attr("onclick", "logout()"); 
 }
 
@@ -430,7 +429,7 @@ function logout() {
 function reveal() {
   $("#myModal").modal('toggle');
   $("#reveal").attr("disabled", true);
-  document.getElementById('reveal').innerHTML = 'Waiting for friend to reveal...';
+  document.getElementById('reveal').innerHTML = 'Reveal Pending';
   socket.emit('reveal', true);
   revealed = true;
 }
@@ -457,7 +456,7 @@ socket.on('bothRevealed', function(user) {
    document.getElementById('friendName').innerHTML = identity;
   $('#myModal2').modal('show');
   document.getElementById('reveal').href = '#myModal2';
-  document.getElementById('reveal').innerHTML = "Show Friend's Identity";
+  document.getElementById('reveal').innerHTML = "Show Identity";
   $('#reveal').attr('disabled', false);
 });
 

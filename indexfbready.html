@@ -10,7 +10,7 @@
 <body style="height: 100%">
 <!-- This is the title and logout button on top of everything -->
 <div id="theBox" class="container" style="height: 100%">
-  <h1>
+  <h1 style="height: calc(7% - 30px)">
     <span style="font-family: 'Geo'">Re<span style="color:red">:</span>
     </span>
     <span style="font-family: 'Finger Paint', cursive">friend</span>
@@ -21,7 +21,7 @@
   </h1>
   <!-- This is where the chat and login takes place -->
   <div id="jumbo" class="jumbotron" 
-    style="height: calc(90% - 96px)">
+    style="height: calc(93% - 30px)">
     <!-- Prompt to login with facebook -->
     <div id="fb" style="height: 100%">
       <h1 style="font-family: Actor">Login with Facebook to get started</h1>
@@ -45,7 +45,8 @@
       <p>Click the button below when you're ready to find a friend</p>
       <div syle="text-align: center">
         <button id="searchBtn" type="button" class="btn btn-default" 
-          onclick="queueEnter()">
+          onclick="queueEnter()"
+          style="display: block; margin-left: auto; margin-right: auto">
           Find a Friend
         </button>
       </div>
@@ -58,7 +59,8 @@
         <div id="tooLong" style="text-align: center" style="display: none">
           <small><p><br>
             Taking too long? Perhaps none of your friends use this app :(
-            <br>Try sharing with a few people and playing a guessing game</p>
+            <br>Try sharing with a few people and playing a guessing game
+            <br>Feel free to do other things but please keep this tab open in case one of your friends wants to chat</p>
           </small>
         </div>
       </div>
@@ -66,9 +68,9 @@
     <!-- The real chat interface -->
     <div id="app" style="display: none; height: 100%">
       <div id="messages" 
-        style="height: calc(80% - 30px); overflow-y: auto; word-wrap: break-word">
+        style="height: calc(86% - 30px); overflow-y: auto; word-wrap: break-word">
       </div>
-      <div id="typing" style="opacity: 0">Friend is typing...</div>
+      <div id="typing" style="opacity: 0; height: 4%">Friend is typing...</div>
 
       <!-- Modal for asking if you would like to reveal -->
       <div class="modal fade" id="myModal">
@@ -138,7 +140,7 @@
     </div><!-- /.modal -->
 
     <!-- Buttons and input for chat -->  
-    <div style="text-align: right">
+    <div style="text-align: right; height: 5%)">
       <span style="float: left">
         Your message:
       </span>
@@ -150,7 +152,8 @@
         Disconnect
       </button>
     </div>
-    <input type="text" id="msgInput" class="form-control input-sm"></input>
+    <input type="text" id="msgInput" class="form-control input-sm"
+    style="height: calc(5% - 12px)"></input>
   </div>
 </div>
 
@@ -255,7 +258,7 @@ function queueEnter() {
   document.getElementById('reveal').innerHTML = 'Reveal Your Identity';
   setTimeout(function() {
     document.getElementById('tooLong').style.display = 'block'
-  }, 100000);
+  }, 10000);
 }
 
 //goCheckQueue

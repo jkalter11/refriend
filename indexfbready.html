@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%; max-height: 100%">
+<html lang="en" style="height: 100%">
 <head>
 <title>Re:friend</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Finger+Paint|Geo&text=Re:friend' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
 </head>
@@ -38,6 +37,42 @@
       </div>
       <h3>What is Re<span style="color:red">:</span>friend?</h3>
       <p style="text-align: justify">Re:friend is a facebook app that matches you to chat anonymously with another one of your friends using the app.</p>
+      <!-- Modal that tells you more about the app -->
+      <div class="modal fade" id="learnMore">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" 
+                aria-hidden="true"><span>x</span>
+              </button>
+              <h4 class="modal-title"><span>
+                Learn More</span>
+              </h4>
+            </div>
+            <div class="modal-body">
+              Re:friend is like omegle.com, except instead of talking with strangers anonymously, you talk with your already established friends anonymously.
+              Use it to re-meet your friends in a contextless setting, ask for anonymous advice, play guessing games, ask questions that you wouldn't dare to 
+              ask publicly, establish closer bonds with your friends, discover unexpected things, or simply troll your friends. During the chat, there is a button
+              that allows you the option of revealing your identity to your friend. This is entirely optional and only takes effect if both friends both click to reveal.
+              You will know whether or not your friend has decided to reveal yet. <br>
+              Also, don't worry about having your info stolen. Facebook login doesn't give me your credentials. I don't use a database, and this app was created as
+              a summer project to learn web coding by a whippersnapper about to make the transition into college. <br>
+              So give it a try. I'd apprecate it, and I hope you enjoy it. Thanks for reading.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+      <!-- Opens the learnMore modal -->
+      <div>
+        <a data-toggle="modal" href="#learnMore" 
+          id="learnMoreLink">Learn More
+        </a>
+      </div>
     </div>
     <!-- Prompt to enter the queue for finding a friend-->
     <div id="queueEnter" style="display: none; height: 100%">

@@ -93,7 +93,7 @@
     </div>
     <!-- Prompt to enter the queue for finding a friend-->
     <div id="queueEnter" style="display: none; height: 100%">
-      <h3>Welcome!</h3>
+      <h3 id="welcome">Welcome!</h3>
       <p>Click the button below when you're ready to find a friend</p>
       <div syle="text-align: center">
         <button id="searchBtn" type="button" class="btn btn-default" 
@@ -280,6 +280,7 @@ var handleResponse = function(response) {
   // This testAPI() function is only called in those cases. 
   function testAPI() {
     FB.api('/me', function(response) {
+      document.getElementById("welcome").innerHTML = "Welcome " + response.name + "!";
       var id_and_name = [response.id, response.name];
       socket.emit('login', id_and_name);
       document.getElementById('logout').style.display = 'block';

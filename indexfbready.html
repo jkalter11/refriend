@@ -5,6 +5,20 @@
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='http://fonts.googleapis.com/css?family=Finger+Paint|Geo&text=Re:friend' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="bootstrap.min.css" media="screen">
+<!-- Google Analytics to tell me how many page views and stuff -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-43481673-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body style="height: 100%">
 <!-- This is the title and logout button on top of everything -->
@@ -57,7 +71,8 @@
               You will know whether or not your friend has decided to reveal yet. <br>
               Also, don't worry about having your info stolen. Facebook login doesn't give me your credentials. I don't use a database, and this app was created as
               a summer project to learn web coding by a whippersnapper about to make the transition into college. <br>
-              So give it a try. I'd apprecate it, and I hope you enjoy it. Thanks for reading.
+              So give it a try. I'd apprecate it, and I hope you enjoy it. Thanks for reading.<br><br>
+            Bugs/feedback? Contact me at personpersonpersonperson@gmail.com
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -192,18 +207,19 @@
     </input>
   </div>
 </div>
+<!-- Styling the fb share popout to make it go up instead of down -->
 <style>
 .fb_edge_comment_widget {
-    top: -224px !important; left: -246px !important; height: 191px;
+    top: -300px !important; left: -275px !important; height: 300px;
 }
 
 .fb_edge_comment_widget > span {
-    height: 184px !important; overflow: hidden; border-top: 1px solid #000;
+    height: 300px !important; overflow: hidden; border-top: 1px solid #000;
 }
 
 .fb_edge_comment_widget > span > iframe {
-     margin-top: -7px;
- }
+     margin-top: -8px;
+}
 </style>
 <div style="float: right" class="fb-like" data-href="http://refriend.herokuapp.com/" data-width="450" data-layout="button_count" data-show-faces="false" data-send="true"></div>
 

@@ -205,9 +205,10 @@ io.sockets.on('connection', function (socket)
     socket.on('reveal', function() {
 	socket.get('room', function(err, room) {
 	    if (err) {throw err;}
+		var broadcast = socket.broadcast;
 	    if(room) {
-		socket.broadcast.to(room);
-		socket.broadcast.emit('reveal', true);
+		broadcast.to(room);
+		broadcast.emit('reveal', true);
 	    }
 	});
     });
@@ -216,15 +217,18 @@ io.sockets.on('connection', function (socket)
     socket.on('bothRevealed', function() {
 	socket.get('username', function(err, username) {
 	    if (err) {throw err;}
+	    var user = username;
 	    socket.get('id', function(err, id) {
 		if(err) {throw err;}
+		var iden = id;
 		socket.get('room', function(err, room) {
 		    if(err) {throw err;}
+		    var broadcast = socket.broadcast;
 		    if(room) {
-			var user = [username, id];
-			socket.broadcast.to(room);
-			socket.broadcast.emit('revealTime', true);
-			socket.broadcast.emit('bothRevealed', user);
+			var userid = [user, iden];
+			broadcast.to(room);
+			broadcast.emit('revealTime', true);
+			broadcast.emit('bothRevealed', userid);
 		    }
 		});
 	    });
@@ -235,14 +239,17 @@ io.sockets.on('connection', function (socket)
     socket.on('revealMe', function() {
 	socket.get('username', function(err, username) {
 	    if (err) {throw err;}
+	    var user = username;
 	    socket.get('id', function(err, id) {
 		if(err) {throw err;}
+		var iden = id;
 		socket.get('room', function(err, room) {
 		    if(err) {throw err;}
+		    var broadcast = socket.broadcast;
 		    if(room) {
-			var user = [username, id];
-			socket.broadcast.to(room);
-			socket.broadcast.emit('bothRevealed', user);
+			var userid = [user, iden];
+			broadcast.to(room);
+			broadcast.emit('bothRevealed', userid);
 		    }
 		});
 	    });

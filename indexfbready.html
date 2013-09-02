@@ -299,6 +299,7 @@ var handleResponse = function(response) {
 //end fb login
 
 var revealed = false;
+var revealedFirst = false;
 var msgInterval = null;
 
 //go into queue
@@ -316,6 +317,7 @@ function queueEnter() {
   document.getElementById('msgInput').disabled = false;
   document.getElementById('typing').style.opacity = 0;
   revealed = false; 
+  revealedFirst = false;
   document.getElementById('revealedYet').style.display = 'block';
   document.getElementById('revealedYet2').style.display = 'none';
   if(msgInterval !== null)
@@ -510,6 +512,7 @@ function reveal() {
 //on partner reveal
 socket.on('reveal', function() {
   if(revealed === true){
+    revealedFirst = true;
     socket.emit('bothRevealed', true);
   }
   else {
@@ -520,7 +523,7 @@ socket.on('reveal', function() {
 
 //on bothRevealed
 socket.on('bothRevealed', function(user) {
-  if (revealed === false)
+  if (revealedFirst === false)
     socket.emit('bothRevealed', true);
   var identity = "Your friend's identity is <b>" + user[0] + "</b>!<br><img src='https://graph.facebook.com/" + user[1] + "/picture'></img>";
    document.getElementById('friendName').innerHTML = identity;

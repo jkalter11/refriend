@@ -227,7 +227,6 @@ io.sockets.on('connection', function (socket)
 		    if(room) {
 			var userid = [user, iden];
 			broadcast.to(room);
-			broadcast.emit('revealTime', true);
 			broadcast.emit('bothRevealed', userid);
 		    }
 		});

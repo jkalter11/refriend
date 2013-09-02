@@ -234,26 +234,6 @@ io.sockets.on('connection', function (socket)
 	});
     });
 
-//response to revealMe
-    socket.on('revealMe', function() {
-	socket.get('username', function(err, username) {
-	    if (err) {throw err;}
-	    var user = username;
-	    socket.get('id', function(err, id) {
-		if(err) {throw err;}
-		var iden = id;
-		socket.get('room', function(err, room) {
-		    if(err) {throw err;}
-		    var broadcast = socket.broadcast;
-		    if(room) {
-			var userid = [user, iden];
-			broadcast.to(room);
-			broadcast.emit('bothRevealed', userid);
-		    }
-		});
-	    });
-	});
-    });
 
 //response to disconnectMe
     socket.on('disconnectMe', function() {
